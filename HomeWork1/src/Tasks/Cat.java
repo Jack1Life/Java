@@ -2,7 +2,7 @@ package Tasks;
 
 public class Cat {
 	private String tabooka;
-	private String nameIsName;
+	public int rasar;
 	private int age;
 	private double weight;
 	private SexList sex;
