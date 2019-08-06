@@ -1,7 +1,8 @@
 package Tasks;
 
 public class Cat {
-	private String name;
+	private String tabooka;
+	public int rasar;
 	private int age;
 	private double weight;
 	private SexList sex;
