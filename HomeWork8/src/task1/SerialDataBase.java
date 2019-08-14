@@ -40,8 +40,9 @@ public class SerialDataBase implements DAOGroup{
 		}
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(this.way + "/" + gr.getName()))) {
 			oos.writeObject(gr);
-		} catch (IOException e) {
-			System.out.println("Saving of group failed!");
+		} 
+		catch (IOException e) {
+			System.out.println("Saving of group failed! " + e.toString());
 		}
 	}
 
@@ -54,7 +55,7 @@ public class SerialDataBase implements DAOGroup{
 			return gr;
 
 		} catch (IOException | ClassNotFoundException e) {
-			System.out.println("Geting of group failed!");
+			System.out.println("Geting of group failed! " + e.toString());
 		}
 		return null;
 	}

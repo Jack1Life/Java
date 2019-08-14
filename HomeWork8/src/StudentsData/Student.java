@@ -1,6 +1,8 @@
 package StudentsData;
 
-public class Student extends Human {
+import java.io.Serializable;
+
+public class Student extends Human{
 	private String group;
 	private int recordBookNum;
 	private double gradePointAverage;

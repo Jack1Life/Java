@@ -1,11 +1,12 @@
 package StudentsData;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Scanner;
 
 import StudentsExeption.FullGroupExeption;
 
-public class Group implements Voencom {
+public class Group implements Voencom, Serializable {
 	private Student[] students = new Student[10];
 	private String name;
 	private String faculty;
@@ -168,7 +169,7 @@ public class Group implements Voencom {
 
 	@Override
 	public String toString() {
-		String str = "Group:";
+		String str = "Group " + this.name + ":";
 		//sortStudents(SortParametrs.NAME);
 		for (Student student : students) {
 			if (student != null)

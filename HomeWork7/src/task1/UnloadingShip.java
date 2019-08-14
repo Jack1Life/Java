@@ -36,6 +36,7 @@ public class UnloadingShip implements Runnable{
 		Thread thisThread = Thread.currentThread();
 		for( ; this.ship.getBoxesNum() > 0; ) {
 			this.ship.setBoxesNum(this.ship.getBoxesNum() - 1);
+			System.out.println(ship.getName() + " have " + this.ship.getBoxesNum()  + " boxes");
 			try {
 				thisThread.sleep(500);
 			} catch (InterruptedException e) {
@@ -43,6 +44,6 @@ public class UnloadingShip implements Runnable{
 			}
 		}
 		this.port.releaseDoc(docNum);
-		System.out.println("Ship" + ship.getName() + "is unloases in doc " + (docNum + 1));
+		System.out.println("Ship" + ship.getName() + " is unloaded in doc " + (docNum + 1));
 	}
 }

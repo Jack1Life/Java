@@ -46,6 +46,7 @@ public class FileCopy implements Runnable {
 	public synchronized long getAllSize() {
 		return allSize;
 	}
+
 	private void copy(InputStream is, OutputStream os) throws IOException {
 		byte[] buffer = new byte[1024 * 1024];
 		int readByte = 0;
@@ -64,16 +65,21 @@ public class FileCopy implements Runnable {
 	}
 
 	public void run() {
-		allSize = this.in.length();
-		currentSize = 0;
-		Thread t = new Thread(new CheckProgress(this));
-		t.start();
-		try {
-			copyFile(in, out);
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (in.exists()) {
+			allSize = this.in.length();
+			currentSize = 0;
+			Thread t = new Thread(new CheckProgress(this));
+			t.start();
+			try {
+				copyFile(in, out);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			System.out.println("File " + in.getName() + " is copied");
+		} else {
+			System.out.println("File is not found!");
 		}
-		System.out.println("File " + in.getName() + " is copied");
+
 	}
 
 }

@@ -1,6 +1,8 @@
 package StudentsData;
 
-public class Human {
+import java.io.Serializable;
+
+public class Human implements Serializable{
 	private String name;
 	private SexList sex;
 	private int age;

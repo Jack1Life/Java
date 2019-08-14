@@ -16,7 +16,7 @@ public class Main {
 		} catch (FullGroupExeption e) {
 			e.printStackTrace();
 		}
-		SerialDataBase base = new SerialDataBase(".");
+		SerialDataBase base = new SerialDataBase("RTF");
 		base.saveGroup(rs32);
 		Group[] groups = base.getAllGroups();
 		for (Group group : groups) {
