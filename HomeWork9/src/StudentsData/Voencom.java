@@ -1,5 +1,7 @@
 package StudentsData;
 
+import java.util.ArrayList;
+
 public interface Voencom {
-	public Student[] watchRecruits();
+	public ArrayList<Student> watchRecruits();
 }

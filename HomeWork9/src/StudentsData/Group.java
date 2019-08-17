@@ -140,14 +140,14 @@ public class Group implements Voencom {
 		}
 	}
 
-	public Student[] watchRecruits() {
+	public ArrayList<Student> watchRecruits() {
 		ArrayList<Student> recruits = new ArrayList<Student>();
 		for (Student student : students) {
 			if (student.getAge() > 17 && student.getSex() == SexList.MALE) {
 				recruits.add(student);
 			}
 		}
-		return (Student[]) recruits.toArray();
+		return recruits;
 	}
 
 	@Override
