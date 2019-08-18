@@ -4,8 +4,7 @@ import java.util.ArrayDeque;
 
 public class Main {
 
-	public static String task4(int colaNum)
-	{
+	public static String task4(int colaNum) {
 		String queueString = "Double Cola Bar";
 		Friends firstInQueue;
 		ArrayDeque<Friends> doubleColaQueue = new ArrayDeque<Friends>();
@@ -14,16 +13,17 @@ public class Main {
 		doubleColaQueue.addLast(Friends.VOLOVITC);
 		doubleColaQueue.addLast(Friends.KUTARAPALLI);
 		doubleColaQueue.addLast(Friends.PENNY);
-		
-		for(int i = 0; i < colaNum; i++) {
+
+		for (int i = 0; i < colaNum; i++) {
 			firstInQueue = doubleColaQueue.pollFirst();
 			doubleColaQueue.addLast(firstInQueue);
 			doubleColaQueue.addLast(firstInQueue);
 		}
 		for (; doubleColaQueue.size() != 0;) {
-			queueString += System.lineSeparator() + "^" + System.lineSeparator() + doubleColaQueue.pollFirst() ;
+			queueString += System.lineSeparator() + "^" + System.lineSeparator()
+					+ doubleColaQueue.pollFirst().getFriend();
 		}
-		
+
 		return queueString;
 	}
 
