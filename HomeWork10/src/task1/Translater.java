@@ -49,14 +49,35 @@ public class Translater {
 		this.vocabulary = vocabulary;
 	}
 
+	private boolean isSeparator(char c) {
+		return !((c >= 'a') && (c <= 'z'));
+	}
+
+	private void translateLine(String line, PrintWriter pw, HashMap<String, String> vocab) {
+		int indxStart = 0;
+		int indxEnd = 0;
+		for (; indxEnd < line.length(); indxEnd++) {
+			if (isSeparator(line.charAt(indxEnd))) {
+				if (indxEnd != indxStart && 
+						vocab.containsKey(line.substring(indxStart, indxEnd))) {
+					pw.print(vocab.get(line.substring(indxStart, indxEnd)) + line.charAt(indxEnd));
+					
+				} else if(indxEnd == indxStart) {
+					pw.print(line.charAt(indxEnd));
+				}else {
+					pw.print(line.substring(indxStart, indxEnd + 1));
+				}
+				indxStart = indxEnd + 1;
+			}
+		}
+		pw.println();
+	}
+
 	private void writeTranslate(ArrayList<String> words) {
 		HashMap<String, String> voc = vocabulary.getVocabulary();
 		try (PrintWriter pw = new PrintWriter(ukr)) {
 			for (String str : words) {
-				if (voc.containsKey(str)) {
-					pw.print(voc.get(str) + " ");
-				}
-				pw.println();
+				translateLine(str, pw, voc);
 			}
 		} catch (Exception e) {
 			System.out.println("Write ukr error!");
@@ -72,8 +93,7 @@ public class Translater {
 			if (!ukr.exists()) {
 				ukr.createNewFile();
 			}
-			ArrayList<String> wordEng = Files.lines(Paths.get(eng.getAbsolutePath()))
-					.map(n -> n.toLowerCase())
+			ArrayList<String> wordEng = Files.lines(Paths.get(eng.getAbsolutePath())).map(n -> n.toLowerCase())
 					.collect(Collectors.toCollection(ArrayList::new));
 			writeTranslate(wordEng);
 		} catch (IOException e) {
