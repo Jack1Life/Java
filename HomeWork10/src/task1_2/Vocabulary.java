@@ -1,4 +1,4 @@
-package task1;
+package task1_2;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,7 +43,8 @@ public class Vocabulary {
 	public void fromFile(String path) {
 
 		try {
-			ArrayList<String> wordList = Files.lines(Paths.get(path)).collect(Collectors.toCollection(ArrayList::new));
+			ArrayList<String> wordList = Files.lines(Paths.get(path))
+					.collect(Collectors.toCollection(ArrayList::new));
 			for (String string : wordList) {
 				String[] temp = string.split("[ ]");
 				vocabulary.put(temp[0], temp[1]);

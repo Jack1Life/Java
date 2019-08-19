@@ -1,4 +1,4 @@
-package task1;
+package task1_2;
 
 import java.io.File;
 
