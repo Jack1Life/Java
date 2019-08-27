@@ -30,11 +30,12 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		Html startPage = createStartPage("RTF");
+		FileSystem fs = new FileSystem(new File("RTF"));
+		ArrayList<Group> groups = fs.getAllGroups();
 		try (ServerSocket soc = new ServerSocket(8080)) {
 			while (true) {
 				Socket cl = soc.accept();
-				Client cli = new Client(cl, startPage.getPage());
+				Client cli = new Client(cl, groups);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
